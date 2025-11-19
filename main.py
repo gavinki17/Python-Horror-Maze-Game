@@ -9,11 +9,11 @@ MAP_W, MAP_H = 31, 31
 
 # --- Sounds ---
 pygame.mixer.init()
-footstep_sound = pygame.mixer.Sound("maze/step.mp3")
-key_pickup_sound = pygame.mixer.Sound("maze/key_pickup.mp3")
-jumpscare_sound = pygame.mixer.Sound("maze/jumpscare.mp3")
-vent_sound = pygame.mixer.Sound("maze/vent.mp3")
-ambience_sound = pygame.mixer.Sound("maze/ambient.mp3")
+footstep_sound = pygame.mixer.Sound("./step.mp3")
+key_pickup_sound = pygame.mixer.Sound("./key_pickup.mp3")
+jumpscare_sound = pygame.mixer.Sound("./jumpscare.mp3")
+vent_sound = pygame.mixer.Sound("./vent.mp3")
+ambience_sound = pygame.mixer.Sound("./ambient.mp3")
 ambience_sound.set_volume(0.3)
 ambience_sound.play(-1)
 
@@ -57,7 +57,7 @@ AMBIENT_BRIGHTNESS, flashlight_on = 120, True
 world_items=[]
 free_cells = [(x+0.5,y+0.5) for y in range(MAP_H) for x in range(MAP_W) if maze_map[y][x]==0]
 random.shuffle(free_cells)
-key_images = [pygame.image.load(f"maze/key.png").convert_alpha() for i in range(5)]
+key_images = [pygame.image.load(f"./key.png").convert_alpha() for i in range(5)]
 for i in range(5):
     world_items.append({"x":free_cells[i][0],"y":free_cells[i][1],"type":"key","img":key_images[i],"float_offset":random.uniform(0,2*math.pi)})
 inventory=[]; required_keys=5; exit_unlocked=False
@@ -74,7 +74,7 @@ locker_color_front=(90,120,150); locker_color_side=(60,80,100)
 hiding=False
 
 # --- Vents ---
-vent_img = pygame.image.load("maze/vent.png").convert_alpha()
+vent_img = pygame.image.load("./vent.png").convert_alpha()
 vents = []
 for i in range(5):
     vx, vy = free_cells.pop()
@@ -90,7 +90,7 @@ vent_target = None
 vent_fade_phase = "fade_out"
 
 # --- Enemy ---
-enemy_img = pygame.image.load("maze/myers.png").convert_alpha()
+enemy_img = pygame.image.load("./myers.png").convert_alpha()
 enemy={"x":MAP_W-2.5,"y":MAP_H-2.5,"path":[],"speed":0.001,"seen":False}
 enemy_cooldown = 0
 
